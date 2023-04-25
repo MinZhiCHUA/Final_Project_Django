@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Les jours de la semaine </h1>
+
+<ul>
+{% for week in weekdays %}
+    <li>{{week}}</li>
+{% endfor %}
+</ul>
+
+{% if weekdays.3 == 'jeudi'%}
+
+<p>Ma condition est un succès</p>
+
+{% else %}
+
+<p>Ma condition n'est pas respecté</p>
+
+{% endif %}
+
+{% endblock content %}

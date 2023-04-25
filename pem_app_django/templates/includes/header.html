@@ -1,0 +1,26 @@
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">Produce Entity Matching</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <!-- <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Prediction</a></li> -->
+        <li class="nav-item"><a href="#" class="nav-link">Prediction</a></li>
+        <li class="nav-item"><a href="{% url 'multi' %}" class="nav-link">History</a></li>
+        {% if user.is_superuser %}
+        <li class="nav-item"><a href="#" class="nav-link">Magic Prediction</a></li>
+        <li class="nav-item"><a href="{% url 'multi' %}" class="nav-link">Magic History</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <span class="navbar-text" >Logged as : {{user.get_username}}</span>
+        <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">logout</a></li>
+        {% else %}
+        <span class="navbar-text">You are not logged in</span>
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">login</a></li>
+        {% endif %}
+      </ul>
+
+    </header>
+  </div>

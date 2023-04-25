@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks static %}
+
+{% block content %}
+<div class='login-view'>
+<div class='container-sm'>
+
+<main class="form-signin w-100 m-auto text-center">
+        {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+            {% endif %}
+        {% endif %}
+
+        <img class="mb-4 justify-content-center" src="https://media.licdn.com/dms/image/C4D0BAQGc0tDAzkpMog/company-logo_200_200/0/1606744342136?e=2147483647&v=beta&t=9U5wWF1BhWXquWb7IAryO3bMmhYxOZzWK1HYVZdhX9E" alt="" width="72" height="57">
+        <div class='container-sm'>
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        
+            <!-- <div class="form-floating">
+                {{ form.username|add_class:"form-control"}}
+                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+            </div>
+            <div class="form-floating">
+                {{ form.password|add_class:"form-control"}}
+                <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+            </div>
+        
+            <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            </div> -->
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+        <input type="hidden" name="next" value="{{ next }}">
+        </form>
+
+        {# Assumes you set up the password_reset view in your URLconf #}
+        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+    </main>
+</div>
+</div>
+{% endblock %}
