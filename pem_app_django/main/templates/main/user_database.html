@@ -1,0 +1,59 @@
+
+{% extends 'base_ori.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    </style>
+    </head>
+
+
+<div class="container">
+<table>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Delete</th>
+    </tr>
+    {% for single_user in user_database %}
+    <tr>
+    <td>{{single_user.get_username}}</td>
+    <td>{{single_user.get_username}}</td>
+    <td><button type="submit" class="btn btn-primary">Delete this user</button></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<br>
+<div class="container">
+    <div class="center">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Add new User</button>
+    </div>
+</div>
+
+{% endblock content %}
+
