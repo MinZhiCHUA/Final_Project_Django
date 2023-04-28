@@ -6,6 +6,9 @@ from django.contrib.auth import get_user_model
 from .forms import ProductForm
 from .models import Product
 
+from requests import Request, Session
+import json
+
 
 
 # Create your views here.
@@ -30,8 +33,8 @@ class User_History_page(TemplateView):
             "product_database" : Product.objects.filter(user_id=request.user),
         }
         # print(list(request.GET.keys())[0])
-        print('get method')
-        print(request.POST)
+        # print('get method')
+        # print(request.POST)
         # if request.GET.keys() == 
         return render(request, 'main/user_history.html', context=context)
     
@@ -68,20 +71,37 @@ class Predict_page(TemplateView):
         return render(request, 'main/prediction.html')
 
     def post(self, request, *args, **kwargs):
+        # TODO: set up the url for api
+        url = "http://127.0.0.1:8000/"
+
+        session = Session()
+
         user = request.user
-        print(user)
+        # print(user)
         form = ProductForm(request.POST)
         if form.is_valid():
+            print(form.cleaned_data)
+
+            # request a respose from api
+            response = session.post(url, json=form.cleaned_data)
+
+            info = response.text
+            info = json.loads(info)
+
+            print(info['context'])
+
             product = form.save(commit=False)
             product.user = user
+            product.pred_label_text = info['context']
             product.save()
             # form.user = get_user_model()
             # form.save(user=get_user_model())
-        else:
-            print('form is not correct')
-            print(form.errors)
-            form = ProductForm()
-        return render(request, 'main/prediction.html', {'form': form})
+        # else:
+        #     print('form is not correct')
+        #     print(form.errors)
+            # form = ProductForm()
+        return render(request, 'main/prediction.html')
+        # return render(request, 'main/prediction.html', {'form': form})
 
 @login_required
 def admin_user_database_page(request):
