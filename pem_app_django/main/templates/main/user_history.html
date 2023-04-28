@@ -1,0 +1,73 @@
+
+{% extends 'base_ori.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    </style>
+    </head>
+
+
+<div class="container">
+<table>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date Created</th>
+      <th>Delete</th>
+    </tr>
+    {% for single_product in product_database %}
+    <tr>
+    <td>{{single_product.title}}</td>
+    <td>{{single_product.description}}</td>
+    <td>{{single_product.pred_date}}</td>
+    <td><button type="submit" onclick="location.href='{% url 'testing_page' product_id=single_product.id%}'" class="btn btn-primary">Delete this product</button></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<br>
+<!-- <div class="container">
+    <div class="center">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Add new User</button>
+    </div>
+</div> -->
+
+<!-- <form action="" method="get">
+  <input type="submit" name="button_one" value="One">
+  <input type="submit" name="button_two" value="Two">
+  <input type="submit" name="button_three" value="Three">
+</form>
+
+<form action="" method="delete">
+  <input type="submit" name="button_four" value="One">
+  <input type="submit" name="button_five" value="Two">
+  <input type="submit" name="button_six" value="Three">
+</form> -->
+
+{% endblock content %}
+
