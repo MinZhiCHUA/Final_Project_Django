@@ -13,7 +13,7 @@
         {% if user.is_superuser %}
         <li class="nav-item"><a href="{% url 'user_database' %}" class="nav-link">User Management</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Feedback Management</a></li>
-        <li class="nav-item"><a href="{% url 'multi' %}" class="nav-link">Product Confirmation Management</a></li>
+        <li class="nav-item"><a href="{% url 'predict_page_api' %}" class="nav-link">Product Confirmation Management</a></li>
         {% endif %}
         {% if user.is_authenticated %}
         <span class="navbar-text" >Logged as : {{user.get_username}}</span>
