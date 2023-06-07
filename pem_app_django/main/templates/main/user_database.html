@@ -36,14 +36,21 @@
 <table>
     <tr>
       <th>Username</th>
-      <th>Email</th>
+      <th>Date joined</th>
+      <th>Admin</th>
       <th>Delete</th>
     </tr>
     {% for single_user in user_database %}
     <tr>
     <td>{{single_user.get_username}}</td>
-    <td>{{single_user.get_username}}</td>
-    <td><button type="submit" class="btn btn-primary">Delete this user</button></td>
+    <td>{{single_user.date_joined}}</td  >
+    <td>{{single_user.is_superuser}}</td>
+      {% if single_user.is_superuser%}
+      <td> - </td>
+      {% else %}
+      <!-- <td><button type="submit" class="btn btn-primary">Delete this user</button></td> -->
+      <td><button type="submit" onclick="location.href='{% url 'delete_user' user_id=single_user.id %}'" class="btn btn-primary">Delete this user</button></td>
+      {% endif %}
     </tr>
     {% endfor %}
   </table>
@@ -51,7 +58,8 @@
 <br>
 <div class="container">
     <div class="center">
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Add new User</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="location.href='{% url 'signup'%}'">Add new User</button>
+        
     </div>
 </div>
 

@@ -37,6 +37,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Output</th>
       <th>Date Created</th>
       <th>Delete</th>
     </tr>
@@ -44,8 +45,9 @@
     <tr>
     <td>{{single_product.title}}</td>
     <td>{{single_product.description}}</td>
+    <td>{{single_product.pred_label_text}}</td>
     <td>{{single_product.pred_date}}</td>
-    <td><button type="submit" onclick="location.href='{% url 'testing_page' product_id=single_product.id%}'" class="btn btn-primary">Delete this product</button></td>
+    <td><button type="submit" onclick="location.href='{% url 'delete_prediction' product_id=single_product.id %}'" class="btn btn-primary">Delete this product</button></td>
     </tr>
     {% endfor %}
   </table>
