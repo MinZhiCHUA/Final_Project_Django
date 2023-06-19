@@ -1,0 +1,58 @@
+
+{% extends 'base_ori.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    </style>
+    </head>
+
+
+<div class="container">
+<table>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Output</th>
+      <th>Date Created</th>
+      <th>Delete</th>
+    </tr>
+    {% for single_product in product_database %}
+    <tr>
+    <td>{{single_product.title}}</td>
+    <td>{{single_product.description}}</td>
+    <td>{{single_product.pred_label_text}}</td>
+    <td>{{single_product.pred_date}}</td>
+    <td><button type="submit" onclick="location.href='{% url 'delete_prediction' product_id=single_product.id %}'" class="btn btn-primary">Delete this product</button></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<br>
+
+{% endblock content %}
+

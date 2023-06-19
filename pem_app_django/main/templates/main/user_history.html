@@ -11,13 +11,21 @@
       width: 100%;
     }
     
-    td, th {
-      border: 1px solid #dddddd;
+    td {
+      /* border: 1px solid #dddddd; */
       text-align: left;
       padding: 8px;
+      border: thin solid black;
     }
     
-    tr:nth-child(even) {
+    /* tr:nth-child(even) {
+      background-color: #dddddd;
+    } */
+    th {
+      /* border: 1px solid #dddddd; */
+      text-align: center;
+      padding: 8px;
+      border: thin solid black;
       background-color: #dddddd;
     }
 
@@ -35,20 +43,39 @@
 <div class="container">
 <table>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Output</th>
-      <th>Date Created</th>
-      <th>Delete</th>
+      <th rowspan="2">Title</th>
+      <th rowspan="2">Description</th>
+      <th colspan="3"><center>Output</center></th>
+      <th rowspan="2">Date Created</th>
+      <th rowspan="2">Delete</th>
     </tr>
-    {% for single_product in product_database %}
+
     <tr>
-    <td>{{single_product.title}}</td>
-    <td>{{single_product.description}}</td>
-    <td>{{single_product.pred_label_text}}</td>
-    <td>{{single_product.pred_date}}</td>
-    <td><button type="submit" onclick="location.href='{% url 'delete_prediction' product_id=single_product.id %}'" class="btn btn-primary">Delete this product</button></td>
-    </tr>
+      <th>attribute_code</th>
+      <th>label</th>
+      <th>score</th>
+  </tr>
+    {% for single_product in product_database %}
+      {% for single_pred in single_product.pred_label_json %}
+        {% if forloop.first %}
+        <tr>
+          <td rowspan="5">{{single_product.title}}</td>
+          <td rowspan="5">{{single_product.description}}</td>
+          <td>{{single_pred.attribute_code}}</td>
+          <td>{{single_pred.label}}</td>
+          <td>{{single_pred.score}}</td>
+          <td rowspan="5">{{single_product.pred_date}}</td>
+          <td rowspan="5"><button type="submit" onclick="location.href='{% url 'delete_prediction' product_id=single_product.id %}'" class="btn btn-primary">Delete this product</button></td>
+          
+        </tr>
+        {% else %}
+        <tr>
+          <td>{{single_pred.attribute_code}}</td>
+          <td>{{single_pred.label}}</td>
+          <td>{{single_pred.score}}</td>
+        </tr>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
   </table>
 </div>
