@@ -1,0 +1,272 @@
+{
+    "200101": [
+        "CHEMINEE_BIOETHANOL"
+    ],
+    "200182": [
+        "PLAQUE_PLEXIGLASS"
+    ],
+    "200185": [
+        "STORE_BANNE"
+    ],
+    "200186": [
+        "STORE_DE_BALCON"
+    ],
+    "200286": [
+        "RADIATEUR_BAIN_D_HUILE",
+        "RADIATEUR_SOUFFLANT"
+    ],
+    "200302": [
+        "VENTILATEUR_ET_BRASSEUR_D_AIR"
+    ],
+    "200401": [
+        "CAMERA_DE_SURVEILLANCE"
+    ],
+    "200404": [
+        "MOTEUR_DE_PORTAIL_COULISSANT"
+    ],
+    "200409": [
+        "MOTEUR_DE_VOLET_ROULANT"
+    ],
+    "200420": [
+        "TELECOMMANDE_POUR_MOTEUR_DE_PORTAIL"
+    ],
+    "200589": [
+        "GROUPE_ELECTROGENE"
+    ],
+    "200663": [
+        "CHAUSSURES_BOTTES_ET_BASKETS"
+    ],
+    "200668": [
+        "VETEMENTS_IMPERMEABLES"
+    ],
+    "200767": [
+        "PERCEUSE_VISSEUSE_SANS_FIL"
+    ],
+    "200853": [
+        "TAPIS_DE_COULOIR",
+        "TAPIS_DE_SALON_CHAMBRE_SALLE_A_MANGER",
+        "TAPIS_EXTERIEUR"
+    ],
+    "200877": [
+        "CARRELAGE_MURAL"
+    ],
+    "200900": [
+        "MIROIR_LUMINEUX"
+    ],
+    "200921": [
+        "VASQUE_A_POSER"
+    ],
+    "200943": [
+        "TAPIS_DE_BAIN"
+    ],
+    "200959": [
+        "PORTE-SAVON"
+    ],
+    "200994": [
+        "CABINE_DE_DOUCHE"
+    ],
+    "200997": [
+        "PORTE_DE_DOUCHE_ACCES_D_ANGLE"
+    ],
+    "201025": [
+        "BAIGNOIRE_BALNEO_ANGLE"
+    ],
+    "201177": [
+        "MITIGEUR_DE_LAVABO"
+    ],
+    "201203": [
+        "SECHE-SERVIETTES_EAU_CHAUDE_MIXTE"
+    ],
+    "201290": [
+        "GALET_PAILLAGE_MINERAL"
+    ],
+    "201375": [
+        "SUJET_LUMINEUX_DE_NOËL"
+    ],
+    "201405": [
+        "PORTILLON"
+    ],
+    "201434": [
+        "PORTAIL"
+    ],
+    "201438": [
+        "DALLE_DE_TERRASSE"
+    ],
+    "201458": [
+        "ABRI_DE_JARDIN"
+    ],
+    "201486": [
+        "TONNELLE_PERGOLA"
+    ],
+    "201492": [
+        "ACCESSOIRES_POUR_TONNELLE_ET_PERGOLA"
+    ],
+    "201505": [
+        "PLANCHA"
+    ],
+    "201524": [
+        "TONDEUSE_SUR_BATTERIE"
+    ],
+    "201714": [
+        "BACHE_A_BULLES",
+        "BACHE_DE_SECURITE"
+    ],
+    "201736": [
+        "TABLE_DE_JARDIN_FIXE"
+    ],
+    "201740": [
+        "SALON_REPAS_DE_JARDIN"
+    ],
+    "201754": [
+        "VOILE_D_OMBRAGE"
+    ],
+    "201759": [
+        "GALETTE_DE_CHAISE"
+    ],
+    "201823": [
+        "POIGNEE_DE_PORTE_SUR_PLAQUE"
+    ],
+    "201849": [
+        "PANNEAU_SIGNALETIQUE",
+        "PANNEAU_SIGNALETIQUE"
+    ],
+    "202265": [
+        "PAPIER_PEINT"
+    ],
+    "202266": [
+        "STICKERS_ADHESIF_DECORATIF"
+    ],
+    "202268": [
+        "PAPIER_PEINT_PANORAMIQUE"
+    ],
+    "202280": [
+        "KIT_DE_TRINGLE_A_RIDEAU"
+    ],
+    "202300": [
+        "1026",
+        "TOILE_IMPRIMEE_AVEC_ENCADREMENT"
+    ],
+    "202301": [
+        "TOILE_IMPRIMEE_SANS_ENCADREMENT",
+        "VERRE_IMPRIME_SANS_ENCADREMENT",
+        "AFFICHE__POSTER__PHOTO__IMAGE",
+        "PLEXIGLASS_IMPRIME"
+    ],
+    "202303": [
+        "MIROIR_DECORATIF_AVEC_MOULURE"
+    ],
+    "202304": [
+        "MIROIR_DECORATIF_SANS_MOULURE"
+    ],
+    "202309": [
+        "CADRE_MONTE_SANS_PASSE-PARTOUT"
+    ],
+    "202317": [
+        "NAPPE"
+    ],
+    "202341": [
+        "RIDEAU"
+    ],
+    "202343": [
+        "HOUSSE_DE_COUSSIN"
+    ],
+    "202345": [
+        "COUSSIN_D_EXTERIEUR",
+        "COUSSIN_DECORATIF"
+    ],
+    "202358": [
+        "AMPOULE"
+    ],
+    "202361": [
+        "SUSPENSION"
+    ],
+    "202366": [
+        "LISEUSE"
+    ],
+    "202367": [
+        "LAMPADAIRE"
+    ],
+    "202371": [
+        "LAMPE_A_POSER"
+    ],
+    "202372": [
+        "1001"
+    ],
+    "202375": [
+        "ABATS-JOUR"
+    ],
+    "202377": [
+        "GUIRLANDE"
+    ],
+    "202378": [
+        "APPLIQUE",
+        "APPLIQUE_DE_DESIGNER"
+    ],
+    "202383": [
+        "PLAFONNIER"
+    ],
+    "202384": [
+        "PLAFONNIER_CONNECTE",
+        "PLAFONNIER_AVEC_DETECTEUR_DE_PRESENCE"
+    ],
+    "202389": [
+        "ROSETTE"
+    ],
+    "202404": [
+        "VENTILATEUR"
+    ],
+    "202448": [
+        "MEUBLE_RANGE-CHAUSSURES"
+    ],
+    "202474": [
+        "BOITE_DE_RANGEMENT"
+    ],
+    "202494": [
+        "ETAGERE_DROITE",
+        "ETAGERE_DROITE"
+    ],
+    "202525": [
+        "1048"
+    ],
+    "202526": [
+        "1050",
+        "1049"
+    ],
+    "202527": [
+        "TABOURET"
+    ],
+    "202587": [
+        "HOUSSE_DE_COUETTE"
+    ],
+    "202592": [
+        "1038"
+    ],
+    "205383": [
+        "PARURE_DE_LIT"
+    ],
+    "205534": [
+        "2014",
+        "TABLE_D_APPOINT_-_TABLE_GIGOGNE"
+    ],
+    "205605": [
+        "1043"
+    ],
+    "205759": [
+        "1051"
+    ],
+    "205806": [
+        "1018"
+    ],
+    "205890": [
+        "1080"
+    ],
+    "206042": [
+        "1039"
+    ],
+    "206097": [
+        "1086"
+    ],
+    "206190": [
+        "2040"
+    ]
+}
