@@ -49,7 +49,7 @@
       <td> - </td>
       {% else %}
       <!-- <td><button type="submit" class="btn btn-primary">Delete this user</button></td> -->
-      <td><button type="submit" onclick="location.href='{% url 'delete_user' user_id=single_user.id %}'" class="btn btn-primary">Delete this user</button></td>
+      <td><button type="submit" onclick="if (confirm('Are you sure you want to delete?')){location.href='{% url 'delete_user' user_id=single_user.id %}'}" class="btn btn-primary">Delete this user</button></td>
       {% endif %}
     </tr>
     {% endfor %}

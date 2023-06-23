@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  web:
+    depends_on:
+      - postgres_db
+    # command: gunicorn demo.wsgi:application --bind 0.0.0.0:80
+    command: python manage.py runserver 0.0.0.0:80
+    ports:
+      - "80:80"
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    # image: j30v/django-devia2
+    volumes:
+      - ./web/:/usr/src/app/
+      - static_files:/usr/src/app/staticfiles
+    env_file:
+      - .env
+  postgres_db:
+    image: postgres
+    restart: always
+    platform: linux/amd64
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+  static_files:

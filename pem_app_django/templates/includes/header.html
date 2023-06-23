@@ -3,7 +3,7 @@
       <title>Product Entity Matching</title>
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="fs-4">Product Entity Matching</span>
+        <span class="fs-4">Product Attribute Extraction</span>
       </a>
 
       <ul class="nav nav-pills">
@@ -12,8 +12,8 @@
         <li class="nav-item"><a href="{% url 'user_history' %}" class="nav-link">History</a></li>
         {% if user.is_superuser %}
         <li class="nav-item"><a href="{% url 'user_database' %}" class="nav-link">User Management</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Feedback Management</a></li>
-        <li class="nav-item"><a href="{% url 'predict_page_api' %}" class="nav-link">Product Confirmation Management</a></li>
+        <!-- <li class="nav-item"><a href="#" class="nav-link">Feedback Management</a></li> -->
+        <li class="nav-item"><a href="{% url 'user_prediction_management' %}" class="nav-link">User's Prediction Management</a></li>
         {% endif %}
         {% if user.is_authenticated %}
         <span class="navbar-text" >Logged as : {{user.get_username}}</span>

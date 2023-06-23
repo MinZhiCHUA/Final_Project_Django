@@ -31,36 +31,13 @@ from google.protobuf.struct_pb2 import Value
 # Create your views here.
 @login_required
 def home_page(request):
-    print ("something something")
     return render(request, 'main/home_page.html')
 
 class User_History_page(TemplateView):
     def get(self, request, *args, **kwargs):
 
         product_full_list = Product.objects.filter(user_id=request.user)
-        # print("I want to print something here")
 
-        # print(product_full_list[0].pred_label_text)
-
-        # pred_json = dict()
-        
-        # for idx, product_single in enumerate(product_full_list):
-        #     print(idx)
-        #     pred_single = json.loads(product_single.pred_label_text) 
-        #     pred_json[idx] = pred_single
-
-        # # print (pred_json)
-
-        # print(product_full_list[0].pred_label_json[0]["attribute_code"])
-
-
-        # for id_single_product, single_prorduct in enumerate(product_full_list):
-        #     for id_single_pred, single_pred in single_prorduct.pred_label_json:
-        #         print(single_pred)
-        #         print (idx)
-
-        
-        
         context = {
             "product_database" : product_full_list,
         }
@@ -69,13 +46,6 @@ class User_History_page(TemplateView):
     
     def post(self, request, *args, **kwargs):
         product_full_list = Product.objects.filter(user_id=request.user)
-        print("I want to print something here")
-
-        print(product_full_list[0])
-
-        
-        # for single_product in product_full_list:
-    
 
         context = {
             "product_database" : product_full_list,
@@ -99,7 +69,7 @@ class Predict_page(TemplateView):
         # print(user)
         form = ProductForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            # print(form.cleaned_data)
 
             # request a respose from api
             response = session.post(url, json=form.cleaned_data)
@@ -107,7 +77,7 @@ class Predict_page(TemplateView):
             info = response.text
             info = json.loads(info)
 
-            print(info['predictions'])
+            # print(info['predictions'])
 
             product = form.save(commit=False)
             product.user = user
@@ -128,8 +98,8 @@ class Predict_page_bento_api(TemplateView):
         user = request.user
 
         form = ProductForm(request.POST)
+
         if form.is_valid():
-            # print(form.cleaned_data)
 
             input_file = form.cleaned_data
             input_file["attribute_code"]="00000"
@@ -180,28 +150,44 @@ class Predict_page_bento_api(TemplateView):
             product.pred_label_json = list_prediction
             product.save()
 
-        return render(request, 'main/prediction_api.html')
+            context = {
+                "missing_field" : False,
+            }
+
+        else:
+            context = {
+                "missing_field" : True,
+            }
+        return render(request, 'main/prediction_api.html', context=context)
 
 @login_required
 def admin_user_database_page(request):
-    user_database = get_user_model()
-    context = {
-        "user_database" : user_database.objects.all(),
-    }
-    
-    return render(request, 'main/user_database.html', context=context)
+
+    user = request.user
+    if user.is_superuser:
+        user_database = get_user_model()
+        context = {
+            "user_database" : user_database.objects.all(),
+        }
+        return render(request, 'main/user_database.html', context=context)
+    else:
+        return render(request, 'main/not_allow.html')
+
 
 @login_required
 def delete_user_page(request, user_id):
 
-    print("Delete User Page")
-    User.objects.filter(id=user_id).delete()
+    user = request.user
+    if user.is_superuser:
+        User.objects.filter(id=user_id).delete()
 
-    user_database = get_user_model()
-    context = {
-        "user_database" : user_database.objects.all(),
-    }
-    return render(request, 'main/user_database.html', context=context)
+        user_database = get_user_model()
+        context = {
+            "user_database" : user_database.objects.all(),
+        }
+        return render(request, 'main/user_database.html', context=context)
+    else:
+        return render(request, 'main/not_allow.html')
 
 @login_required
 def delete_prediction_page(request, product_id):
@@ -237,24 +223,36 @@ def tmp_product(request):
 
 def signup(request):
    
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        # print(form)
-        if form.is_valid():
-            print("FORM IS VALID")
-            print(form.cleaned_data.get('username'))
-            user = User.objects.create_user(form.cleaned_data.get('username'), form.cleaned_data.get('password1'))
+    user = request.user
+    if user.is_superuser:
 
-            user_database = get_user_model()
-            context = {
-                "user_database" : user_database.objects.all(),
-            }
+        if request.method == 'POST':
+            form = SignUpForm(request.POST)
+            # print(form)
+            if form.is_valid():
 
-            return render(request, 'main/user_database.html', context=context)
-    else: 
-        form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+                # user = User.objects.create_user(form.cleaned_data.get('username'), form.cleaned_data.get('password1'))
+                # new_user = User.objects.create_user(form.cleaned_data.get('username'))
+                new_user = form.save(commit=False)
+                password = form.cleaned_data['password1'] # get password
+                new_user.set_password(password) # set the password
+                new_user.save() # save the user
 
+                user_database = get_user_model()
+                context = {
+                    "user_database" : user_database.objects.all(),
+                }
+
+                user_database = get_user_model()
+
+
+
+                return render(request, 'main/user_database.html', context=context)
+        else: 
+            form = SignUpForm()
+        return render(request, 'registration/signup.html', {'form': form})
+    else:
+        return render(request, 'main/not_allow.html')
 
 def predict_custom_trained_model_sample(
     project: str,
@@ -285,11 +283,51 @@ def predict_custom_trained_model_sample(
     response = client.predict(
         endpoint=endpoint, instances=instances, parameters=parameters
     )
-    print("response")
-    print(" deployed_model_id:", response.deployed_model_id)
     # The predictions are a google.protobuf.Value representation of the model's predictions.
     predictions = response.predictions
     # for prediction in predictions:
     #     print(" prediction:", dict(prediction))
 
     return predictions
+
+@login_required
+def user_prediction_management_page(request):
+
+    user = request.user
+    if user.is_superuser:
+        user_database = get_user_model()
+
+        user_prediction_full_list = []
+
+        for user in user_database.objects.all():
+            single_user = {
+                'user_id':str(user.id), 
+                'user_name':(user.get_username()),
+                'user_predict_no':len(Product.objects.filter(user_id=user.id))
+            }
+            user_prediction_full_list.append(single_user)
+
+        context = {
+            "user_predict_history" : user_prediction_full_list,
+        }
+
+        return render(request, 'main/user_predict_manage.html', context=context)
+    else:
+        return render(request, 'main/not_allow.html')
+
+
+@login_required
+def admin_user_predict_history(request, user_id):
+    user = request.user
+    if user.is_superuser:
+        product_full_list = Product.objects.filter(user_id=user_id)
+        single_user = User.objects.get(id=user_id)
+
+        context = {
+            "product_database" : product_full_list,
+            "single_user" : str(single_user.username).capitalize()
+        }
+
+        return render(request, 'main/admin_display_user_predict_history.html', context=context)
+    else:
+        return render(request, 'main/not_allow.html')

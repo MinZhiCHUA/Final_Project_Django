@@ -2,83 +2,17 @@
 {% load static %}
 
 <div class='container'>
-{{% block content %}
+{% block content %}
 
-<head>
-    <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-
-    .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100px;
-    }
-
-    </style>
-    </head>
-
-
-<div class="container">
-  <table>
-    <tr>
-      <th rowspan="2">a</th>
-      <th>b</th>
-      <th rowspan="2">d</th>
-    </tr>
-    <tr>
-      <td>c</td>
-    </tr>
-  </table>
-</div>
-<br>
-
-<div class="container">
-  <table>
-    <tr class="bg-primary">
-      <th rowspan="2">Title</th>
-      <th rowspan="2">Description</th>
-      <th colspan="3"><center>Output</center></th>
-      <th rowspan="2">Date Created</th>
-      <th rowspan="2">Delete</th>
-    </tr>
-    <tr class="bg-primary">
-      <th>Attribute Code</th>
-      <th>Label</th>
-      <th>Confident Score</th>
-    </tr>
-    <tr>
-      <td rowspan="2">a</td>
-      <td rowspan="2">b</td>
-      <td>c</td>
-      <td>d</td>
-      <td>e</td>
-      <td rowspan="2">f</td>
-      <td rowspan="2">g</td>
-      <tr>
-        <td>c2</td>
-        <td>d2</td>
-        <td>e2</td>
-      </tr>
-      
-
-    </tr>
-
-  </table>
+<div 
+class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+>
+    <!-- <div class="col-md-5 p-lg-5 mx-auto my-5"> -->
+      <!-- <h1 class="display-4 fw-normal">This is the first page for product entity matching</h1> -->
+      <img class="mb-4 justify-content-center" src="static/img_hp.jpg">
+      <!-- <p class="lead fw-normal">Mieux que le Bitcoin</p> -->
+    <!-- </div> -->
 </div>
 
 {% endblock content %}
+</div>

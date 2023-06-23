@@ -1,0 +1,54 @@
+
+{% extends 'base_ori.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+
+    </style>
+    </head>
+
+
+<div class="container">
+<table>
+    <tr>
+      <th>Username</th>
+      <th>Number of Predictions Made </th>
+      <th>User's Prediction</th>
+    </tr>
+    {% for single_user in user_predict_history %}
+    <tr>
+    <td>{{single_user.user_name}}</td>
+    <td>{{single_user.user_predict_no}}</td>
+    <td><button type="submit" onclick="location.href='{% url 'admin_user_predict_history' user_id=single_user.user_id %}'" class="btn btn-primary">View User's Prediction History</button></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
+{% endblock content %}
+
